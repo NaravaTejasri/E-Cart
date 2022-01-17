@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "../../styles/homepage.styles.scss";
 import Category from "../../components/Category/Category";
 import fetchCategories from "../../store/categories/action";
 import { selectCategories } from "../../store/categories/selector";

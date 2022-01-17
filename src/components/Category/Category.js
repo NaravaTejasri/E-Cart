@@ -4,8 +4,10 @@ function Category(props) {
   const { title, subtitle } = props;
   return (
     <div className="menu-item">
-      <h1>{title}</h1>
-      <p>{subtitle}</p>
+      <div className="content">
+        <h1 className="title">{title}</h1>
+        <span className="subtitle">{subtitle}</span>
+      </div>
     </div>
   );
 }
