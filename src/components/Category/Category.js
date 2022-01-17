@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 function Category(props) {
   const { title, subtitle, imageUrl } = props;
@@ -11,7 +12,9 @@ function Category(props) {
         }}
       />
       <div className="content">
-        <h1 className="title">{title}</h1>
+        <Link to={`/categories/${props.id}`}>
+          <h1 className="title">{title}</h1>
+        </Link>
         <span className="subtitle">{subtitle}</span>
       </div>
     </div>
