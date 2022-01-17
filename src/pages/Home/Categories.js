@@ -23,6 +23,7 @@ function Categories() {
               id={category.id}
               title={category.title}
               subtitle={category.subtitle}
+              imageUrl={category.imageUrl}
             />
           );
         })}
