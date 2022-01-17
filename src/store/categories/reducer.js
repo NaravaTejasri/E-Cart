@@ -8,7 +8,7 @@ export default function categoryReducer(state = initialState, action) {
       console.log("category action", action.payload);
       return {
         ...state,
-        list: [...action.payload.categories],
+        list: [...action.payload],
       };
     }
     default: {

@@ -11,7 +11,7 @@ const fetchCategories = () => {
     try {
       const category = await axios.get(`${apiUrl}/categories`);
       console.log("Hiiii", category.data);
-      dispatch(fetchedCategoriesSuccess(category.data));
+      dispatch(fetchedCategoriesSuccess(category.data.categories));
     } catch (e) {
       console.log(e.message);
     }
