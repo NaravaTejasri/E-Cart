@@ -14,7 +14,7 @@ function ShopPreview() {
   }, [dispatch]);
 
   return (
-    <div className="shop">
+    <div className="shop-page">
       <h3>Shop</h3>
       <Shop categories={categories} />
     </div>
