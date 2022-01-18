@@ -5,11 +5,12 @@ import { Routes, Route } from "react-router-dom";
 import Categories from "./pages/Home/Categories";
 import Products from "./pages/Products/Products";
 import ShopPreview from "./pages/Shop/ShopPreview";
+import Header from "./components/Navigation/Header";
 
 function App() {
   return (
     <div className="App">
-      <h1>E-Cart</h1>
+      <Header />
       <Routes>
         <Route exact path="/" element={<Categories />} />
         <Route path="/shop" element={<ShopPreview />} />
