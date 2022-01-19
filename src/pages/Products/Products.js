@@ -15,11 +15,11 @@ function Products() {
   }, [dispatch, id]);
 
   return (
-    <div className="product page">
+    <div className="product">
       <h3>Products</h3>
       {products.map((product) => {
         return (
-          <div key={product.id}>
+          <div className="product-item" key={product.id}>
             {product.name}
             {product.price}
             <img src={product.imageUrl} alt={product.name}></img>
