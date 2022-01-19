@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectToken } from "../../store/user/selector";
+import CartItem from "../Cart/CartItems";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 
@@ -22,9 +23,8 @@ export default function Header() {
         <Link className="option" to="/shop">
           SHOP
         </Link>
-        <Link className="option" to="/contant">
-          CONTACT
-        </Link>
+        <CartItem />
+
         {loginLogoutControls}
       </div>
     </div>
