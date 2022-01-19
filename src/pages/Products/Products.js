@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../../styles/homepage.styles.scss";
+
 import { useParams } from "react-router-dom";
 import { fetchProducts } from "../../store/categories/action";
 import { selectProducts } from "../../store/categories/selector";
+import ProductItem from "../../components/Product/ProductItem";
 
 function Products() {
   const { id } = useParams();
@@ -15,17 +16,17 @@ function Products() {
   }, [dispatch, id]);
 
   return (
-    <div className="product">
-      <h3>Products</h3>
-      {products.map((product) => {
-        return (
-          <div className="product-item" key={product.id}>
-            {product.name}
-            {product.price}
-            <img src={product.imageUrl} alt={product.name}></img>
-          </div>
-        );
-      })}
+    <div className="product-page">
+      <div className="items">
+        {products.map((item) => (
+          <ProductItem
+            key={item.id}
+            name={item.name}
+            price={item.price}
+            imageUrl={item.imageUrl}
+          />
+        ))}
+      </div>
     </div>
   );
 }
