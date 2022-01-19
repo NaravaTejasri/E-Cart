@@ -12,9 +12,10 @@ export default function userReducer(state = initialState, action) {
       return { ...state, ...action.payload };
     }
 
-    case "user/userLogout":
+    case "user/userLogout": {
       localStorage.removeItem("token");
       return { ...initialState, token: null };
+    }
 
     default: {
       return state;
