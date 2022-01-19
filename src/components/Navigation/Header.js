@@ -5,9 +5,12 @@ export default function Header() {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
-        <img className="logo" src="/images/shopping-bag.png" alt=""></img>
+        <img className="logo" src="/images/shopping-bag.png" alt="" />
       </Link>
       <div className="options">
+        <Link className="option" to="/">
+          CATEGORIES
+        </Link>
         <Link className="option" to="/shop">
           SHOP
         </Link>
