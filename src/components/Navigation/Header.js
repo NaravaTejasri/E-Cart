@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectToken } from "../../store/user/selector";
-//import CartDropdown from "../Cart/CartdropDown";
+import CartDropdown from "../Cart/CartdropDown";
 import CartIcon from "../Cart/CartIcon";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 
 export default function Header() {
   const token = useSelector(selectToken);
+  const [cart, setCart] = useState(false);
+  console.log(cart);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
@@ -24,11 +26,14 @@ export default function Header() {
         <Link className="option" to="/shop">
           SHOP
         </Link>
-        <CartIcon />
+
+        <div onClick={() => setCart(!cart)}>
+          <CartIcon />
+        </div>
+
         {loginLogoutControls}
       </div>
-
-      {/* <CartDropdown /> */}
+      {cart && <CartDropdown />}
     </div>
   );
 }
