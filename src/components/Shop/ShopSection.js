@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/shop.styles.scss";
+import CustomButton from "../Button/Button";
 
 function Shop(props) {
   return (
@@ -24,6 +25,7 @@ function Shop(props) {
                         <span className="name">{item.name}</span>
                         <span className="price">{item.price}€</span>
                       </div>
+                      <CustomButton>Add to Cart</CustomButton>
                     </div>
                   );
                 })}
