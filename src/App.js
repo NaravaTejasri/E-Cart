@@ -7,6 +7,7 @@ import Products from "./pages/Products/Products";
 import ShopPreview from "./pages/Shop/ShopPreview";
 import Header from "./components/Navigation/Header";
 import Login from "./pages/Login/Login";
+import SignupPage from "./pages/Signup/SignupPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/shop" element={<ShopPreview />} />
         <Route path="/categories/:id" element={<Products />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/userSignup" element={<SignupPage />} />
       </Routes>
     </div>
   );

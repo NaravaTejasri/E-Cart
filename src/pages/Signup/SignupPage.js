@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../store/user/action";
+import { useNavigate } from "react-router-dom";
+import { signUp } from "../../store/user/action";
 import { selectToken } from "../../store/user/selector";
 import "../../styles/login.styles.scss";
 
-function Login() {
-  const token = useSelector(selectToken);
-  const navigate = useNavigate();
-
+function SignupPage() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const token = useSelector(selectToken);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,41 +22,45 @@ function Login() {
 
   function submitHandler(event) {
     event.preventDefault();
-    console.log("email and password", email, password);
-    dispatch(login(email, password));
-    setEmail("");
-    setPassword("");
+    console.log("email and password", name, email, password);
+    dispatch(signUp(name, email, password));
+    //setEmail("");
+    //setPassword("");
   }
 
   return (
     <div className="sign-in">
       <div className="container">
-        <h3>Sign in with your Email and Password</h3>
+        <h3>Sign Up </h3>
         <form onSubmit={submitHandler} className="form">
           <input
+            type="name"
+            // value={email}
+            onChange={(event) => setName(event.target.value)}
+            placeholder="your name"
+            required
+          />
+          <input
             type="email"
-            value={email}
+            //value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="@gmail.com"
             required
           />
           <input
             type="password"
-            value={password}
+            //value={password}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
             required
           />
           <button type="submit" class="btn">
-            Login
+            Signup
           </button>
-          <p class="message">
-            Already registered?<Link to="/userSignup">Signup</Link>
-          </p>
         </form>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default SignupPage;
