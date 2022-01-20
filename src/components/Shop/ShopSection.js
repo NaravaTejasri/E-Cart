@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/shop.styles.scss";
-import CustomButton from "../Button/Button";
+import CollectionItem from "./CollectionItem";
 
 function Shop(props) {
   return (
@@ -13,21 +13,7 @@ function Shop(props) {
               {category.products
                 .filter((item, index) => index < 4)
                 .map((item) => {
-                  return (
-                    <div className="collection-item">
-                      <div
-                        className="image"
-                        style={{
-                          backgroundImage: `url(${item.imageUrl})`,
-                        }}
-                      />
-                      <div className="collection-footer">
-                        <span className="name">{item.name}</span>
-                        <span className="price">{item.price}€</span>
-                      </div>
-                      <CustomButton>Add to Cart</CustomButton>
-                    </div>
-                  );
+                  return <CollectionItem key={item.id} item={item} />;
                 })}
             </div>
           </div>
