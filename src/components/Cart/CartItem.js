@@ -10,19 +10,23 @@ function CartItem() {
 
   return (
     <div className="cart-item">
-      {items.map((item) => {
-        return (
-          <div key={item.id}>
-            <img src={item.imageUrl} alt="item" />
-            <div className="item-details">
-              <span className="name">{item.name}</span>
-              <span className="price">
-                {item.quantity} * {item.price}€
-              </span>
+      {items.length ? (
+        items.map((item) => {
+          return (
+            <div key={item.id}>
+              <img src={item.imageUrl} alt="item" />
+              <div className="item-details">
+                <span className="name">{item.name}</span>
+                <span className="price">
+                  {item.quantity} * {item.price}€
+                </span>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })
+      ) : (
+        <span className="empty-message">Your cart is empty</span>
+      )}
     </div>
   );
 }

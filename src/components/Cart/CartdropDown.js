@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../styles/cart.styles.scss";
 import CustomButton from "../Button/Button";
 import CartItem from "./CartItem";
@@ -9,7 +10,9 @@ function CartDropdown() {
       <div className="cart-items">
         <CartItem />
       </div>
-      <CustomButton>GO TO CHECKOUT</CustomButton>
+      <Link to="/checkout">
+        <CustomButton>GO TO CHECKOUT</CustomButton>
+      </Link>
     </div>
   );
 }
