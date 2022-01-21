@@ -6,7 +6,7 @@ import { selectCategories } from "../../store/categories/selector";
 
 function ShopPreview() {
   const categories = useSelector(selectCategories);
-  console.log("categories", categories);
+  //console.log("categories", categories);
   const dispatch = useDispatch();
 
   useEffect(() => {

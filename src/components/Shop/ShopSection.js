@@ -7,7 +7,7 @@ function Shop(props) {
     <div className="collection-preview">
       {props.categories.map((category) => {
         return (
-          <div>
+          <div key={category.id}>
             <h1 className="title">{category.title}</h1>
             <div className="preview">
               {category.products

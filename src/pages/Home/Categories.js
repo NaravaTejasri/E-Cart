@@ -7,7 +7,7 @@ import { selectCategories } from "../../store/categories/selector";
 
 function Categories() {
   const categories = useSelector(selectCategories);
-  console.log("categories", categories);
+  //console.log("categories", categories);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCategories());
@@ -15,7 +15,7 @@ function Categories() {
   return (
     <div className="homepage">
       <h3>Categories</h3>
-      <div className="directory-menu">
+      <div key={categories.id} className="directory-menu">
         {categories.map((category) => {
           return (
             <Category

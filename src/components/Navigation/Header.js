@@ -10,7 +10,7 @@ import LoggedOut from "./LoggedOut";
 export default function Header() {
   const token = useSelector(selectToken);
   const [cart, setCart] = useState(false);
-  console.log(cart);
+  //console.log(cart);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
