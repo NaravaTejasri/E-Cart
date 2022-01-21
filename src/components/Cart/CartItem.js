@@ -17,7 +17,7 @@ function CartItem() {
             <div className="item-details">
               <span className="name">{item.name}</span>
               <span className="price">
-                {item.quantity} * {item.price}
+                {item.quantity} * {item.price}€
               </span>
             </div>
           </div>
