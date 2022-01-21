@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/cart/action";
 import CustomButton from "../Button/Button";
 
 const CollectionItem = ({ item }) => {
-  const { name, price, imageUrl } = item;
+  const { id, name, price, imageUrl } = item;
   const dispatch = useDispatch();
 
   return (
@@ -21,7 +21,7 @@ const CollectionItem = ({ item }) => {
       </div>
 
       <CustomButton
-        onClick={() => dispatch(addItem({ name, price, imageUrl }))}
+        onClick={() => dispatch(addItem({ id, name, price, imageUrl }))}
       >
         Add to Cart
       </CustomButton>
