@@ -1,6 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import CustomButton from "../../components/Button/Button";
 import CheckoutItem from "../../components/Checkout/CheckoutItem";
+
 import { selectCartItem } from "../../store/cart/selector";
 import "../../styles/checkout.styles.scss";
 
@@ -36,6 +39,9 @@ function Checkout() {
         return <CheckoutItem key={item.id} item={item} />;
       })}
       <div className="total">TOTAL:{totalPrice}€</div>
+      <Link to="/shipping">
+        <CustomButton>Proceed to Checkout</CustomButton>
+      </Link>
     </div>
   );
 }

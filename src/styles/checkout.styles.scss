@@ -29,3 +29,18 @@
     font-size: 36px;
   }
 }
+
+//checkout steps
+.checkout-steps {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-weight: bold;
+
+  &.checkout-steps > div.active {
+    color: #f08000;
+    border-top-color: orange;
+  }
+}
