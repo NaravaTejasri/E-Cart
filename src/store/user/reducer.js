@@ -14,6 +14,7 @@ export default function userReducer(state = initialState, action) {
 
     case "user/userLogout": {
       localStorage.removeItem("token");
+      localStorage.removeItem("shippingAddress");
       return { ...initialState, token: null };
     }
 
