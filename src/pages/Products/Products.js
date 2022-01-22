@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { fetchProducts } from "../../store/categories/action";
 import { selectProducts } from "../../store/categories/selector";
 import ProductItem from "../../components/Product/ProductItem";
+import "../../styles/product.styles.scss";
 
 function Products() {
   const { id } = useParams();
@@ -21,6 +22,7 @@ function Products() {
         {products.map((item) => (
           <ProductItem
             key={item.id}
+            id={item.id}
             name={item.name}
             price={item.price}
             imageUrl={item.imageUrl}
