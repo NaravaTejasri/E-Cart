@@ -1,0 +1,45 @@
+.grid-container {
+  display: flex;
+}
+
+.card {
+  border: 0.1rem #c0c0c0 solid;
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+.card-body {
+  padding: 1rem;
+}
+.card-body > * {
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+img.small {
+  max-width: 4rem;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.summary {
+  & button {
+    width: 50%;
+    padding: 0.5rem;
+    background-color: rgb(63, 60, 60);
+    color: white;
+    border-radius: 1rem;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  .card {
+    width: 30rem;
+  }
+}

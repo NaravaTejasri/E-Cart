@@ -1,6 +1,6 @@
 const initialState = {
   shippingAddress: localStorage.getItem("shippingAddress"),
-  payment: "PayPal",
+  payment: "",
 };
 
 export default function orderReducer(state = initialState, action) {
@@ -15,7 +15,6 @@ export default function orderReducer(state = initialState, action) {
     }
     case "orders/payMethod": {
       console.log("payment action", action.payload);
-
       return {
         ...state,
         payment: action.payload,

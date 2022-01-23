@@ -12,7 +12,7 @@ export default function PaymentMethod(props) {
   const navigate = useNavigate();
 
   const shipping = useSelector(shippingAddress);
-  console.log("shipping", shipping);
+  // console.log("shipping", shipping);
 
   useEffect(() => {
     if (!shipping) {
@@ -22,8 +22,9 @@ export default function PaymentMethod(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    //console.log("pament", payment);
     dispatch(paymentMethod(payment));
-    navigate("/placeOrder");
+    navigate("/placeorder");
   };
   return (
     <div>
@@ -38,10 +39,9 @@ export default function PaymentMethod(props) {
             <input
               type="radio"
               id="paypal"
-              value={payment}
+              value="PayPal"
               name="paymentMethod"
               required
-              checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></input>
           </div>
@@ -52,7 +52,7 @@ export default function PaymentMethod(props) {
             <input
               type="radio"
               id="stripe"
-              value={payment}
+              value="Stripe"
               name="paymentMethod"
               required
               onChange={(e) => setPaymentMethod(e.target.value)}
