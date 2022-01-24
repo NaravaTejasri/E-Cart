@@ -1,2 +1,2 @@
 export const shippingAddress = (state) => state.orders.shippingAddress;
-export const paymentMethod = (state) => state.orders.payment;
+export const paymentType = (state) => state.orders.payment;
