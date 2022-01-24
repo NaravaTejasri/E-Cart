@@ -1,18 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "../../components/Checkout/CheckoutSteps";
 import { selectCartItem } from "../../store/cart/selector";
 import "../../styles/placeOrder.styles.scss";
 
-import { paymentMethod, shippingAddress } from "../../store/orders/selector";
+import { paymentType, shippingAddress } from "../../store/orders/selector";
+import { orderData } from "../../store/orders/action";
 
 export default function PlaceOrder() {
-  const paymentType = useSelector(paymentMethod);
-  //console.log("paytype", paymentType);
+  //const [sdkReady, setSdkReady] = useState(false);
+  const paymentMethod = useSelector(paymentType);
+  console.log("paytype", paymentMethod);
   const shipping = useSelector(shippingAddress);
   const items = useSelector(selectCartItem);
   const navigate = useNavigate();
+  console.log("The shipping address", shipping);
+
+  useEffect(() => {
+    if (!paymentMethod) {
+      navigate("/payment");
+    }
+  }, []);
 
   const totalPrice = items.reduce(
     (accumulatedQuantity, cartItems) =>
@@ -20,14 +29,10 @@ export default function PlaceOrder() {
     0
   );
 
-  useEffect(() => {
-    if (!paymentType) {
-      navigate("/payment");
-    }
-  }, []);
-
+  const dispatch = useDispatch();
   function placeOrderHandler() {
     console.log("in function");
+    dispatch(orderData(totalPrice, shipping, paymentMethod, items));
   }
 
   return (
@@ -53,7 +58,7 @@ export default function PlaceOrder() {
                 <h2>Payment</h2>
                 <p>
                   <strong>Method:</strong>
-                  {paymentType}
+                  {paymentMethod}
                   <br />
                 </p>
               </div>
@@ -63,24 +68,27 @@ export default function PlaceOrder() {
               <div className="card card-body">
                 <h2>Order Items</h2>
                 <ul>
-                  {items.map((item) => (
-                    <li key={item.product}>
-                      <div className="row">
-                        <div>
-                          <img
-                            src={item.imageUrl}
-                            alt={item.name}
-                            className="small"
-                          ></img>
+                  {items.map((item) => {
+                    //console.log("each item", item);
+                    return (
+                      <li key={item.id}>
+                        <div className="row">
+                          <div>
+                            <img
+                              src={item.imageUrl}
+                              alt={item.name}
+                              className="small"
+                            ></img>
+                          </div>
+                          <div className="min-30">{item.name}</div>
+                          <div>
+                            {item.quantity} x {item.price} =
+                            {item.quantity * item.price}€
+                          </div>
                         </div>
-                        <div className="min-30">{item.name}</div>
-                        <div>
-                          {item.quantity} x {item.price} =
-                          {item.quantity * item.price}€
-                        </div>
-                      </div>
-                    </li>
-                  ))}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </li>

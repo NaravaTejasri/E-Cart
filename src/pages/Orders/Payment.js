@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "../../components/Checkout/CheckoutSteps";
-import { paymentMethod } from "../../store/orders/action";
+import { payments } from "../../store/orders/action";
 import { shippingAddress } from "../../store/orders/selector";
 import "../../styles/payment.styles.scss";
 
@@ -23,7 +23,7 @@ export default function PaymentMethod(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     //console.log("pament", payment);
-    dispatch(paymentMethod(payment));
+    dispatch(payments(payment));
     navigate("/placeorder");
   };
   return (
