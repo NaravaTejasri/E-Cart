@@ -5,23 +5,31 @@ import CheckoutSteps from "../../components/Checkout/CheckoutSteps";
 import { selectCartItem } from "../../store/cart/selector";
 import "../../styles/placeOrder.styles.scss";
 
-import { paymentType, shippingAddress } from "../../store/orders/selector";
+import {
+  orderCreate,
+  paymentType,
+  shippingAddress,
+} from "../../store/orders/selector";
 import { orderData } from "../../store/orders/action";
 
 export default function PlaceOrder() {
   //const [sdkReady, setSdkReady] = useState(false);
+  const navigate = useNavigate();
   const paymentMethod = useSelector(paymentType);
-  console.log("paytype", paymentMethod);
+  if (!paymentMethod) {
+    navigate("/payment");
+  }
+  const order = useSelector(orderCreate);
+  console.log("order", order.id);
   const shipping = useSelector(shippingAddress);
   const items = useSelector(selectCartItem);
-  const navigate = useNavigate();
   console.log("The shipping address", shipping);
 
   useEffect(() => {
-    if (!paymentMethod) {
-      navigate("/payment");
+    if (order.id !== undefined) {
+      navigate(`/order/${order.id}`);
     }
-  }, []);
+  }, [order.id]);
 
   const totalPrice = items.reduce(
     (accumulatedQuantity, cartItems) =>
