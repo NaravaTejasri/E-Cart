@@ -11,6 +11,7 @@ import Checkout from "./pages/CheckoutPage/Checkout";
 import ShippingAddressScreen from "./components/Shipping/ShippingAddress";
 import PaymentMethod from "./pages/Orders/Payment";
 import PlaceOrder from "./pages/Orders/PlaceOrder";
+import OrderScreen from "./pages/Orders/OrderScreen";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/shipping" element={<ShippingAddressScreen />} />
         <Route path="/payment" element={<PaymentMethod />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
+        <Route path="/order/:id" element={<OrderScreen />} />
         <Route path="/login" element={<Login />} />
         <Route path="/userSignup" element={<SignupPage />} />
       </Routes>

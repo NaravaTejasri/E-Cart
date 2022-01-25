@@ -1,6 +1,7 @@
 const initialState = {
   shippingAddress: localStorage.getItem("shippingAddress"),
   payment: "",
+  order: {},
 };
 
 export default function orderReducer(state = initialState, action) {
@@ -18,6 +19,14 @@ export default function orderReducer(state = initialState, action) {
       return {
         ...state,
         payment: action.payload,
+      };
+    }
+
+    case "orders/userOrderDetails": {
+      console.log("order action", action.payload);
+      return {
+        ...state,
+        order: action.payload,
       };
     }
 

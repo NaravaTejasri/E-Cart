@@ -17,3 +17,7 @@ export const clearItem = (data) => ({
   type: "item/deleteItem",
   payload: data,
 });
+
+export const emptyCart = () => ({
+  type: "item/emptyCart",
+});

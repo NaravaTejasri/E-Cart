@@ -8,6 +8,7 @@ import {
   setMessage,
   showMessageWithTimeout,
 } from "../appState/actions";
+import { emptyCart } from "../cart/action";
 import { selectUser } from "../user/selector";
 
 export const saveShippingAddress = (data) => ({
@@ -20,10 +21,15 @@ export const payments = (data) => ({
   payload: data,
 });
 
+export const orderDetails = (data) => ({
+  type: "orders/userOrderDetails",
+  payload: data,
+});
+
 export const orderData = (total, shippingAddress, paymentMethod, items) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
-    console.log("order", total, shippingAddress, paymentMethod, items);
+    //console.log("order", total, shippingAddress, paymentMethod, items);
     const user = selectUser(getState());
     try {
       const response = await axios.post(
@@ -42,7 +48,9 @@ export const orderData = (total, shippingAddress, paymentMethod, items) => {
       );
 
       console.log("user orders data", response.data.order);
-      //dispatch(loginSuccess(response.data));
+      dispatch(orderDetails(response.data.order));
+      dispatch(emptyCart());
+      //localStorage.removeItem("cartItems")
       dispatch(showMessageWithTimeout("success", true, "order created"));
       dispatch(appDoneLoading());
     } catch (error) {

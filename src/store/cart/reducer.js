@@ -89,6 +89,13 @@ export default function cartReducer(state = initialState, action) {
       };
     } //condition matches filter return true  - true - remove item - 1===1 - true
 
+    case "item/emptyCart": {
+      return {
+        ...state,
+        cartItems: [],
+      };
+    }
+
     default: {
       return state;
     }
