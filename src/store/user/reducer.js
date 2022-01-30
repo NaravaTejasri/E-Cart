@@ -1,6 +1,7 @@
 const initialState = {
   name: null,
   email: null,
+  isAdmin: localStorage.getItem("isAdmin"),
   token: localStorage.getItem("token"),
 };
 
@@ -9,11 +10,13 @@ export default function userReducer(state = initialState, action) {
     case "user/loginSuccess": {
       console.log("user action", action.payload);
       localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("isAdmin", action.payload.isAdmin);
       return { ...state, ...action.payload };
     }
 
     case "user/userLogout": {
       localStorage.removeItem("token");
+      localStorage.removeItem("isAdmin");
       localStorage.removeItem("shippingAddress");
       return { ...initialState, token: null };
     }

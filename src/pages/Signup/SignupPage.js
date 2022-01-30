@@ -9,6 +9,7 @@ function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAdmin, setisAdmin] = useState(false);
 
   const token = useSelector(selectToken);
   const navigate = useNavigate();
@@ -22,8 +23,8 @@ function SignupPage() {
 
   function submitHandler(event) {
     event.preventDefault();
-    console.log("email and password", name, email, password);
-    dispatch(signUp(name, email, password));
+    console.log("email and password", name, email, password, isAdmin);
+    dispatch(signUp(name, email, password, isAdmin));
     //setEmail("");
     //setPassword("");
   }
@@ -35,21 +36,27 @@ function SignupPage() {
         <form onSubmit={submitHandler} className="form">
           <input
             type="name"
-            // value={email}
+            value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="your name"
             required
           />
           <input
             type="email"
-            //value={email}
+            value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="@gmail.com"
             required
           />
+          <label>I am an admin?</label>
+          <input
+            type="checkbox"
+            value={isAdmin}
+            onChange={(event) => setisAdmin(event.target.checked)}
+          />
           <input
             type="password"
-            //value={password}
+            value={password}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
             required

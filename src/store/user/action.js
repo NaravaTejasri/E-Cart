@@ -16,7 +16,7 @@ export const logOut = () => ({
   type: "user/userLogout",
 });
 
-export const signUp = (name, email, password) => {
+export const signUp = (name, email, password, isAdmin) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
@@ -24,6 +24,7 @@ export const signUp = (name, email, password) => {
         name,
         email,
         password,
+        isAdmin,
       });
 
       console.log(response);

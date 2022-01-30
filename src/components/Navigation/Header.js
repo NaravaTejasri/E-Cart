@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectToken } from "../../store/user/selector";
+import { selectToken, selectUser } from "../../store/user/selector";
 import CartDropdown from "../Cart/CartdropDown";
 import CartIcon from "../Cart/CartIcon";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 
 export default function Header() {
-  const token = useSelector(selectToken);
+  //const token = useSelector(selectToken);
+  const { token, isAdmin } = useSelector(selectUser);
+
   const [cart, setCart] = useState(false);
   //console.log(cart);
 
@@ -30,7 +32,7 @@ export default function Header() {
         <div onClick={() => setCart(!cart)}>
           <CartIcon />
         </div>
-
+        {token && isAdmin === true ? "isAdmin" : null}
         {loginLogoutControls}
       </div>
       {cart && <CartDropdown />}
