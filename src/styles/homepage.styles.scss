@@ -42,6 +42,7 @@ a:hover {
   }
 }
 
+//home page
 .homepage {
   display: flex;
   flex-direction: column;
@@ -52,6 +53,19 @@ a:hover {
 .search {
   padding: 5%;
   border-radius: 10px;
+}
+
+.category {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  & button {
+    padding: 10px;
+    background-color: #ee7070;
+    border-radius: 5px;
+  }
 }
 
 .directory-menu {
