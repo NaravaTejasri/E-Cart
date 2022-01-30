@@ -2,10 +2,11 @@ import React from "react";
 import "../../styles/shop.styles.scss";
 import CollectionItem from "./CollectionItem";
 
-function Shop(props) {
+function ShopSection(props) {
+  const { categories } = props;
   return (
     <div className="collection-preview">
-      {props.categories.map((category) => {
+      {categories.map((category) => {
         return (
           <div key={category.id}>
             <h1 className="title">{category.title}</h1>
@@ -23,4 +24,4 @@ function Shop(props) {
   );
 }
 
-export default Shop;
+export default ShopSection;

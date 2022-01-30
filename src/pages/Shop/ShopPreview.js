@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Shop from "../../components/Shop/ShopSection";
+import ShopSection from "../../components/Shop/ShopSection";
 import { fetchCategories } from "../../store/categories/action";
 import { selectCategories } from "../../store/categories/selector";
 
@@ -15,7 +15,7 @@ function ShopPreview() {
 
   return (
     <div className="shop-page">
-      <Shop categories={categories} />
+      <ShopSection categories={categories} />
     </div>
   );
 }
