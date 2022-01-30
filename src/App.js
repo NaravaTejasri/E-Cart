@@ -12,6 +12,8 @@ import ShippingAddressScreen from "./components/Shipping/ShippingAddress";
 import PaymentMethod from "./pages/Orders/Payment";
 import PlaceOrder from "./pages/Orders/PlaceOrder";
 import OrderScreen from "./pages/Orders/OrderScreen";
+import CreateCategory from "./pages/Home/CreateCategory";
+import UpdateCategory from "./pages/Home/UpdateCategory";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Categories />} />
+        <Route exact path="/createCategory" element={<CreateCategory />} />
+        <Route exact path="/editCategory" element={<UpdateCategory />} />
         <Route path="/shop" element={<ShopPreview />} />
         <Route path="/categories/:id" element={<Products />} />
         <Route path="/checkout" element={<Checkout />} />
