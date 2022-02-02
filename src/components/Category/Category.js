@@ -16,6 +16,16 @@ function Category(props) {
           <h1 className="title">{title}</h1>
         </Link>
         <span className="subtitle">{subtitle}</span>
+        <Link to={`/category/${props.id}`}>
+          <button
+            style={{
+              padding: 5,
+              width: 50,
+            }}
+          >
+            Edit
+          </button>
+        </Link>
       </div>
     </div>
   );

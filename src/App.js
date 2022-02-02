@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Categories />} />
         <Route exact path="/createCategory" element={<CreateCategory />} />
-        <Route exact path="/editCategory" element={<UpdateCategory />} />
+        <Route exact path="/category/:id" element={<UpdateCategory />} />
         <Route path="/shop" element={<ShopPreview />} />
         <Route path="/categories/:id" element={<Products />} />
         <Route path="/checkout" element={<Checkout />} />

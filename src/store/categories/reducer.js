@@ -12,6 +12,15 @@ export default function categoryReducer(state = initialState, action) {
         list: [...action.payload],
       };
     }
+    //Edit
+    case "categories/fetchedUpdatedCategory": {
+      console.log("updated category action", action.payload);
+      return {
+        ...state,
+        //list: [...action.payload],
+        list: [...state.list, ...action.payload],
+      };
+    }
     case "categories/fetchedProducts": {
       console.log("products action", action.payload);
       return {

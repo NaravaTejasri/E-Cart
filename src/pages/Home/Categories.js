@@ -9,9 +9,9 @@ import { selectUser } from "../../store/user/selector";
 
 function Categories() {
   const categories = useSelector(selectCategories);
-  const { token, isAdmin } = useSelector(selectUser);
+  console.log("categories", categories);
+  const { isAdmin } = useSelector(selectUser);
 
-  //console.log("categories", categories);
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
 
