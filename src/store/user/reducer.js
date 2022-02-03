@@ -15,10 +15,11 @@ export default function userReducer(state = initialState, action) {
     }
 
     case "user/userLogout": {
+      console.log("user action", action.payload);
       localStorage.removeItem("token");
       localStorage.removeItem("isAdmin");
       localStorage.removeItem("shippingAddress");
-      return { ...initialState, token: null };
+      return { ...initialState, token: null, isAdmin: null };
     }
 
     default: {
