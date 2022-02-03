@@ -12,15 +12,6 @@ export default function categoryReducer(state = initialState, action) {
         list: [...action.payload],
       };
     }
-    //Edit
-    case "categories/fetchedUpdatedCategory": {
-      console.log("updated category action", action.payload);
-      return {
-        ...state,
-        //list: [...action.payload],
-        list: [...state.list, ...action.payload],
-      };
-    }
     case "categories/fetchedProducts": {
       console.log("products action", action.payload);
       return {
@@ -28,6 +19,31 @@ export default function categoryReducer(state = initialState, action) {
         products: [...action.payload],
       };
     }
+    //Admin part
+
+    case "categories/newfetchedCategory": {
+      return {
+        ...state,
+        list: [...state.list, action.payload],
+      };
+    }
+    case "categories/fetchedUpdatedCategory": {
+      console.log("updated category action", action.payload);
+      return {
+        ...state,
+        list: { ...action.payload },
+      };
+    }
+    case "categories/deletedCategory":
+      const categoryId = action.payload;
+      //console.log("id", categoryId);
+      const newCategory = state.list.filter(
+        (category) => category.id !== categoryId
+      );
+      return {
+        ...state,
+        list: [...newCategory],
+      };
     default: {
       return state;
     }

@@ -1,7 +1,12 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
 import { selectToken } from "../user/selector";
-import { showMessageWithTimeout } from "../appState/actions";
+import {
+  appDoneLoading,
+  appLoading,
+  showMessageWithTimeout,
+} from "../appState/actions";
+import { selectCategories } from "./selector";
 
 export const fetchedCategoriesSuccess = (data) => ({
   type: "categories/fetchedCategories",
@@ -13,8 +18,19 @@ export const fetchedProductsSuccess = (data) => ({
   payload: data,
 });
 
+//Admin
+export const newCategorySuccess = (data) => ({
+  type: "categories/newfetchedCategory",
+  payload: data,
+});
+
 export const updatedCategory = (category) => ({
   type: "categories/fetchedUpdatedCategory",
+  payload: category,
+});
+
+export const deletedCategory = (category) => ({
+  type: "categories/deletedCategory",
   payload: category,
 });
 
@@ -36,7 +52,7 @@ export const fetchProducts = (id) => {
   return async (dispatch, getState) => {
     try {
       const res = await axios.get(`${apiUrl}/categories/${id}`);
-      console.log(res.data.categories);
+      console.log("product action", res.data.categories.products);
       dispatch(fetchedProductsSuccess(res.data.categories.products));
     } catch (e) {
       console.log(e);
@@ -64,7 +80,7 @@ export const createCategory = (title, subtitle, imageUrl) => {
       );
 
       console.log("Yep!", response.data);
-      dispatch(fetchedCategoriesSuccess(response.data.category));
+      dispatch(newCategorySuccess(response.data.category));
       dispatch(
         showMessageWithTimeout(
           "success",
@@ -114,3 +130,58 @@ export const updateCategory = (id, title, subtitle, imageUrl) => {
 };
 
 //delete the category
+export const deleteCategory = (id) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+    console.log(id);
+    const token = selectToken(getState());
+    try {
+      const response = await axios.delete(`${apiUrl}/categories/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log("Category deleted?", response.data);
+      dispatch(deletedCategory(id));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.error(e);
+    }
+  };
+};
+
+//Admin can add the product
+export const createProduct = (id, name, imageUrl, price) => {
+  return async (dispatch, getState) => {
+    console.log("hiii");
+    try {
+      const token = selectToken(getState());
+      const response = await axios.post(
+        `${apiUrl}/categories/${id}`,
+        {
+          name,
+          imageUrl,
+          price,
+          id,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      console.log("Yep!", response.data);
+      // dispatch(newCategorySuccess(response.data.category));
+      dispatch(
+        showMessageWithTimeout(
+          "success",
+          false,
+          "New category created successfully",
+          4000
+        )
+      );
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
