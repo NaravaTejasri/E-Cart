@@ -1,8 +1,13 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { selectUser } from "../../store/user/selector";
+import { deleteCategory } from "../../store/categories/action";
 
 function Category(props) {
+  const dispatch = useDispatch();
   const { title, subtitle, imageUrl } = props;
+  const { isAdmin } = useSelector(selectUser);
   return (
     <div className=" large menu-item">
       <div
@@ -16,16 +21,32 @@ function Category(props) {
           <h1 className="title">{title}</h1>
         </Link>
         <span className="subtitle">{subtitle}</span>
-        <Link to={`/category/${props.id}`}>
+
+        {isAdmin === true ? (
+          <Link to={`/category/${props.id}`}>
+            <button
+              style={{
+                padding: 5,
+                width: 50,
+              }}
+            >
+              Edit
+            </button>
+          </Link>
+        ) : null}
+        {isAdmin === true ? (
           <button
+            className="button"
+            onClick={() => dispatch(deleteCategory(props.id))}
             style={{
               padding: 5,
               width: 50,
+              margin: 5,
             }}
           >
-            Edit
+            Delete
           </button>
-        </Link>
+        ) : null}
       </div>
     </div>
   );

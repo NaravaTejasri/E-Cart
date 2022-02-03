@@ -9,7 +9,7 @@ import { selectUser } from "../../store/user/selector";
 
 function Categories() {
   const categories = useSelector(selectCategories);
-  console.log("categories", categories);
+  //console.log("categories", categories);
   const { isAdmin } = useSelector(selectUser);
 
   const [searchInput, setSearchInput] = useState("");
@@ -41,7 +41,7 @@ function Categories() {
     <div className="homepage">
       <div className="category">
         <Link to="/createCategory">
-          {isAdmin ? <button>Create New</button> : null}
+          {isAdmin === true ? <button>Create New</button> : null}
         </Link>
       </div>
       <div>
