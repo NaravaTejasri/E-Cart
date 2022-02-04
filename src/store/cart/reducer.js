@@ -1,5 +1,6 @@
 const initialState = {
   cartItems: [],
+  //cartItems: localStorage.getItem("cartItems"),
 };
 
 export default function cartReducer(state = initialState, action) {
@@ -89,6 +90,7 @@ export default function cartReducer(state = initialState, action) {
       };
     } //condition matches filter return true  - true - remove item - 1===1 - true
 
+    //empty cart after order created
     case "item/emptyCart": {
       return {
         ...state,
