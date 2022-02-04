@@ -6,7 +6,6 @@ import {
   appLoading,
   showMessageWithTimeout,
 } from "../appState/actions";
-import { selectCategories } from "./selector";
 
 export const fetchedCategoriesSuccess = (data) => ({
   type: "categories/fetchedCategories",
@@ -52,7 +51,7 @@ export const fetchProducts = (id) => {
   return async (dispatch, getState) => {
     try {
       const res = await axios.get(`${apiUrl}/categories/${id}`);
-      console.log("product action", res.data.categories.products);
+      //console.log("product action", res.data.categories.products);
       dispatch(fetchedProductsSuccess(res.data.categories.products));
     } catch (e) {
       console.log(e);
@@ -99,7 +98,7 @@ export const createCategory = (title, subtitle, imageUrl) => {
 export const updateCategory = (id, title, subtitle, imageUrl) => {
   return async (dispatch, getState) => {
     try {
-      console.log("action", id);
+      //console.log("action", id);
       const token = selectToken(getState());
       const response = await axios.patch(
         `${apiUrl}/categories/${id}`,
@@ -113,7 +112,7 @@ export const updateCategory = (id, title, subtitle, imageUrl) => {
         }
       );
 
-      console.log("Yep!", response.data.category);
+      //console.log("Yep!", response.data.category);
       dispatch(updatedCategory(response.data.category));
       dispatch(
         showMessageWithTimeout(
@@ -142,7 +141,7 @@ export const deleteCategory = (id) => {
         },
       });
 
-      console.log("Category deleted?", response.data);
+      //console.log("Category deleted?", response.data);
       dispatch(deletedCategory(id));
       dispatch(appDoneLoading());
     } catch (e) {

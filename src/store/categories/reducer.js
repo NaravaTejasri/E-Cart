@@ -20,7 +20,6 @@ export default function categoryReducer(state = initialState, action) {
       };
     }
     //Admin part
-
     case "categories/newfetchedCategory": {
       return {
         ...state,
@@ -31,7 +30,10 @@ export default function categoryReducer(state = initialState, action) {
       console.log("updated category action", action.payload);
       return {
         ...state,
-        list: { ...action.payload },
+        list: [
+          action.payload,
+          ...state.list.filter((cat) => cat.id !== action.payload.id),
+        ],
       };
     }
     case "categories/deletedCategory":
