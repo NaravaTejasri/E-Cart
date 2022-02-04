@@ -32,7 +32,7 @@ export default function Header() {
         <div onClick={() => setCart(!cart)}>
           <CartIcon />
         </div>
-        {token && isAdmin === true ? "isAdmin" : null}
+        {token && isAdmin ? "isAdmin" : null}
         {loginLogoutControls}
       </div>
       {cart && <CartDropdown />}

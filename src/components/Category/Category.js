@@ -22,7 +22,7 @@ function Category(props) {
         </Link>
         <span className="subtitle">{subtitle}</span>
 
-        {isAdmin === true ? (
+        {isAdmin ? (
           <Link to={`/category/${props.id}`}>
             <button
               style={{
@@ -34,7 +34,7 @@ function Category(props) {
             </button>
           </Link>
         ) : null}
-        {isAdmin === true ? (
+        {isAdmin ? (
           <button
             className="button"
             onClick={() => dispatch(deleteCategory(props.id))}

@@ -1,7 +1,7 @@
 const initialState = {
   name: null,
   email: null,
-  isAdmin: Boolean(localStorage.getItem("isAdmin")),
+  isAdmin: localStorage.getItem("isAdmin") === "true",
   token: localStorage.getItem("token"),
 };
 

@@ -41,7 +41,7 @@ function Categories() {
     <div className="homepage">
       <div className="category">
         <Link to="/createCategory">
-          {isAdmin === true ? <button>Create New</button> : null}
+          {isAdmin ? <button>Create New</button> : null}
         </Link>
       </div>
       <div>
