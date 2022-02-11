@@ -6,6 +6,7 @@ import {
   setMessage,
   showMessageWithTimeout,
 } from "../appState/actions";
+import { selectToken } from "./selector";
 
 export const loginSuccess = (userWithToken) => ({
   type: "user/loginSuccess",
@@ -14,6 +15,11 @@ export const loginSuccess = (userWithToken) => ({
 
 export const logOut = () => ({
   type: "user/userLogout",
+});
+
+const tokenStillValid = (userWithoutToken) => ({
+  type: "token/tokenStillValid",
+  payload: userWithoutToken,
 });
 
 export const signUp = (name, email, password, isAdmin) => {
@@ -64,6 +70,36 @@ export const login = (email, password) => {
         // console.log(error.message);
         dispatch(setMessage("danger", true, error.message));
       }
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const getUserWithStoredToken = () => {
+  return async (dispatch, getState) => {
+    // get token from the state
+    const token = selectToken(getState());
+
+    // if we have no token, stop
+    if (token === null) return;
+
+    dispatch(appLoading());
+    try {
+      // if we do have a token,
+      // check wether it is still valid or if it is expired
+      const response = await axios.get(`${apiUrl}/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      // token is still valid
+      dispatch(tokenStillValid(response.data));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      // console.log(error.response.message);
+
+      // if we get a 4xx or 5xx response,
+      // get rid of the token by logging out
+      dispatch(logOut());
       dispatch(appDoneLoading());
     }
   };

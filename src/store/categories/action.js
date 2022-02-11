@@ -153,11 +153,11 @@ export const deleteCategory = (id) => {
 //Admin can add the product
 export const createProduct = (id, name, imageUrl, price) => {
   return async (dispatch, getState) => {
-    console.log("hiii");
+    console.log("hiii", id, name, imageUrl, price);
     try {
       const token = selectToken(getState());
       const response = await axios.post(
-        `${apiUrl}/categories/${id}`,
+        `${apiUrl}/categories/product/${id}`,
         {
           name,
           imageUrl,
@@ -169,8 +169,8 @@ export const createProduct = (id, name, imageUrl, price) => {
         }
       );
 
-      console.log("Yep!", response.data);
-      // dispatch(newCategorySuccess(response.data.category));
+      console.log("Yep!", response.data.product);
+      dispatch(fetchedProductsSuccess(response.data.product));
       dispatch(
         showMessageWithTimeout(
           "success",

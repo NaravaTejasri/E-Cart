@@ -6,12 +6,14 @@ import { fetchProducts } from "../../store/categories/action";
 import { selectProducts } from "../../store/categories/selector";
 import ProductItem from "../../components/Product/ProductItem";
 import "../../styles/product.styles.scss";
+import { selectUser } from "../../store/user/selector";
 
 function Products() {
   const [sortBy, setSortby] = useState("price");
   const { id } = useParams();
   const products = useSelector(selectProducts);
   //console.log("products page", products);
+  const { isAdmin } = useSelector(selectUser);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,9 +35,11 @@ function Products() {
 
   return (
     <div className="product-page">
-      {/*  <Link to={`/product/${id}`}>
-        <button>Create</button>
-      </Link> */}
+      {isAdmin ? (
+        <Link to={`/${id}`}>
+          <button>Create</button>
+        </Link>
+      ) : null}
 
       <div className="sorting">
         <select className="sorting" onChange={changeSorting}>
