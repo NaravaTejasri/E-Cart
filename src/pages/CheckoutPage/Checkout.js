@@ -56,9 +56,18 @@ function Checkout() {
         return <CheckoutItem key={item.id} item={item} />;
       })}
       <div className="total">TOTAL:{totalPrice}€</div>
-      <Link to="/shipping">
-        <CustomButton>Proceed to Checkout</CustomButton>
-      </Link>
+      {items.length ? (
+        <Link to="/shipping">
+          <CustomButton>Proceed to Checkout</CustomButton>
+        </Link>
+      ) : (
+        <div>
+          <p> 🙇🏻 No items in your Cart 🙇🏻</p>
+          <Link to="/">
+            <h2> Go shopping 💃🏻</h2>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
