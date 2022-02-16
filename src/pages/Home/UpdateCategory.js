@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateCategory } from "../../store/categories/action";
+import { selectCategories } from "../../store/categories/selector";
 import "../../styles/login.styles.scss";
 
 function UpdateCategory() {
@@ -10,9 +11,13 @@ function UpdateCategory() {
   const { id } = useParams();
   console.log("id", id);
 
-  const [title, setTitle] = useState("");
-  const [subtitle, setsubTitle] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const category = useSelector(selectCategories);
+  console.log("categories", category);
+
+  const [title, setTitle] = useState(category.title);
+  const [subtitle, setsubTitle] = useState(category.subtitle);
+  const [imageUrl, setImageUrl] = useState(category.imageUrl);
+  console.log("title", title);
 
   function submitForm(event) {
     event.preventDefault();

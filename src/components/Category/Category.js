@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../store/user/selector";
 import { deleteCategory } from "../../store/categories/action";
+import { setMessage } from "../../store/appState/actions";
 
 function Category(props) {
   const dispatch = useDispatch();
@@ -37,7 +38,16 @@ function Category(props) {
         {isAdmin ? (
           <button
             className="button"
-            onClick={() => dispatch(deleteCategory(props.id))}
+            onClick={() => {
+              let result = window.confirm(
+                "Are you sure you want to delete this item?"
+              );
+              if (result) {
+                //Logic to delete the item
+                dispatch(deleteCategory(props.id));
+              }
+            }}
+            //onClick={() => dispatch(deleteCategory(props.id))}
             style={{
               padding: 5,
               width: 50,

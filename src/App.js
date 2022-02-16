@@ -27,9 +27,9 @@ function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     dispatch(getUserWithStoredToken());
-  }, [dispatch]);
+  }, [dispatch]); */
 
   return (
     <div className="App">
