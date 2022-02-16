@@ -9,7 +9,7 @@ import { config } from "../../config";
 
 export default function Orderscreen() {
   const order = useSelector(orderCreate);
-  console.log("order", order);
+  //console.log("order", order);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
