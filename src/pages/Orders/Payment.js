@@ -18,7 +18,7 @@ export default function PaymentMethod(props) {
     if (!shipping) {
       navigate("/shipping");
     }
-  }, []);
+  }, [navigate, shipping]);
 
   const submitHandler = (e) => {
     e.preventDefault();

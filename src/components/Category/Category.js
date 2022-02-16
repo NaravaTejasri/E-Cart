@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../store/user/selector";
 import { deleteCategory } from "../../store/categories/action";
-import { setMessage } from "../../store/appState/actions";
 
 function Category(props) {
   const dispatch = useDispatch();

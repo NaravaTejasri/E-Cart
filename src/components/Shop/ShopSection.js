@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectCategories } from "../../store/categories/selector";
+import React from "react";
+/* import { useSelector } from "react-redux";
+import { selectCategories } from "../../store/categories/selector"; */
 import "../../styles/shop.styles.scss";
 import CollectionItem from "./CollectionItem";
 

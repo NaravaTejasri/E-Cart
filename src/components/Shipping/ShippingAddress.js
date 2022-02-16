@@ -15,7 +15,7 @@ export default function ShippingAddressScreen() {
     if (!token) {
       navigate("/login");
     }
-  }, []);
+  }, [token, navigate]);
 
   const [fullName, setFullName] = useState("");
   const [address, setAddress] = useState("");

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectToken, selectUser } from "../../store/user/selector";
+import { selectUser } from "../../store/user/selector";
 import CartDropdown from "../Cart/CartdropDown";
 import CartIcon from "../Cart/CartIcon";
 import LoggedIn from "./LoggedIn";

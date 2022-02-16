@@ -14,7 +14,7 @@ export default function Orderscreen() {
   const navigate = useNavigate();
 
   //payment
-  const [show, setShow] = useState(false);
+  //const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
   const [ErrorMessage, setErrorMessage] = useState("");
   const [orderID, setOrderID] = useState(false);
@@ -65,6 +65,7 @@ export default function Orderscreen() {
   const onError = (data, actions) => {
     setErrorMessage("An Error occured with your payment ");
   };
+  console.log("onError", onError);
 
   useEffect(() => {
     if (success) {
@@ -72,7 +73,7 @@ export default function Orderscreen() {
       //history.push("/");
       navigate("/");
     }
-  }, [success]);
+  }, [success, navigate]);
 
   console.log(1, orderID);
   console.log(2, success);

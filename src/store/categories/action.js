@@ -141,7 +141,7 @@ export const deleteCategory = (id) => {
         },
       });
 
-      //console.log("Category deleted?", response.data);
+      console.log("Category deleted?", response.data);
       dispatch(deletedCategory(id));
       dispatch(appDoneLoading());
     } catch (e) {

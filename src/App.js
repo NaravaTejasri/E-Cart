@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
@@ -19,12 +19,10 @@ import CreateCategory from "./pages/Home/CreateCategory";
 import UpdateCategory from "./pages/Home/UpdateCategory";
 import CreateProduct from "./pages/Products/CreateProduct";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
-import { getUserWithStoredToken } from "./store/user/action";
 
 function App() {
-  const dispatch = useDispatch();
   const isLoading = useSelector(selectAppLoading);
 
   /*  useEffect(() => {
