@@ -14,6 +14,10 @@ export default function Header() {
   const [cart, setCart] = useState(false);
   //console.log(cart);
 
+  function onCartClose() {
+    setCart(false);
+  }
+
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
@@ -35,7 +39,7 @@ export default function Header() {
         {token && isAdmin ? "isAdmin" : null}
         {loginLogoutControls}
       </div>
-      {cart && <CartDropdown />}
+      {cart && <CartDropdown onCartClose={onCartClose} />}
     </div>
   );
 }
