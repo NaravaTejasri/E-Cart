@@ -6,6 +6,7 @@ import { fetchCategories } from "../../store/categories/action";
 import { selectCategories } from "../../store/categories/selector";
 import { Link } from "react-router-dom";
 import { selectUser } from "../../store/user/selector";
+import Loading from "../../components/Loading";
 
 function Categories() {
   const categories = useSelector(selectCategories);
@@ -17,8 +18,11 @@ function Categories() {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    if (categories === null) {
+      return <Loading />;
+    }
     dispatch(fetchCategories());
-  }, [dispatch]);
+  }, [dispatch, categories]);
 
   //search for category
   const searchItems = (searchValue) => {

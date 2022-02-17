@@ -36,12 +36,10 @@ export const deletedCategory = (category) => ({
 //get all the categories
 export const fetchCategories = () => {
   return async (dispatch, getState) => {
-    dispatch(appLoading());
     try {
       const category = await axios.get(`${apiUrl}/categories`);
       //console.log("Hiiii", category.data);
       dispatch(fetchedCategoriesSuccess(category.data.categories));
-      dispatch(appLoading());
     } catch (e) {
       console.log(e.message);
     }
