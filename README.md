@@ -5,6 +5,7 @@ This read me will explain the codebase,which was created to build a fully-functi
 ### What is this repository for?
 
 E-Cart is a web application which will show the list of all Cattegories and Products. User can add the products to the cart and can see the details of cartItems list.
+Live version: https://e-cart-portfolio.netlify.app/
 
 ### Technologies used
 
@@ -57,18 +58,6 @@ In this app, as admin he can add, edit and delete the categories and products.
 ##### install dependencies
 
 > npm install
-
-##### Setup Postgres
-
-> Local postgres
-
-- Install Mongodb
-- Create .env file in root folder
-- Set MONGODB_URL=mongodb://localhost/shoppingCart
-  > Atlas Cloud MongoDB
-- Create database at https://cloud.mongodb.com
-- Create .env file in root folder
-- Set MONGODB_URL=mongodb+srv://your-db-connection
 
 #### Run Backend
 
