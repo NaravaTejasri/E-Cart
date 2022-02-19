@@ -41,7 +41,6 @@ export default function cartReducer(state = initialState, action) {
 
     //remove item from the cart
     case "item/removeItem": {
-      console.log(" item removed action", action.payload);
       const product = action.payload;
       const existingCartItem = state.cartItems.find((item) => {
         return item.id === product.id;
@@ -81,7 +80,6 @@ export default function cartReducer(state = initialState, action) {
 
     //delete the item in the cart
     case "item/deleteItem": {
-      console.log("delete item action", action.payload);
       return {
         ...state,
         cartItems: state.cartItems.filter(

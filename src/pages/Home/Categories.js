@@ -21,7 +21,7 @@ function Categories() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  if (categories === null) {
+  if (!categories) {
     console.log(categories);
     return <Loading />;
   }
