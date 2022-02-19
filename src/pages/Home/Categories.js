@@ -18,11 +18,13 @@ function Categories() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    /*   if (!categories) {
-      return <Loading />;
-    } */
     dispatch(fetchCategories());
-  }, [dispatch, categories]);
+  }, [dispatch]);
+
+  if (categories === null) {
+    console.log(categories);
+    return <Loading />;
+  }
 
   //search for category
   const searchItems = (searchValue) => {
@@ -58,7 +60,7 @@ function Categories() {
         />
       </div>
       <h3>Categories</h3>
-      <div key={categories.id} className="directory-menu">
+      <div className="directory-menu">
         {searchInput.length > 1 ? (
           <>
             {filteredResults.map((category) => (
@@ -73,21 +75,17 @@ function Categories() {
           </>
         ) : (
           <>
-            {!categories ? (
-              <Loading />
-            ) : (
-              categories.map((category) => {
-                return (
-                  <Category
-                    key={category.id}
-                    id={category.id}
-                    title={category.title}
-                    subtitle={category.subtitle}
-                    imageUrl={category.imageUrl}
-                  />
-                );
-              })
-            )}
+            {categories.map((category) => {
+              return (
+                <Category
+                  key={category.id}
+                  id={category.id}
+                  title={category.title}
+                  subtitle={category.subtitle}
+                  imageUrl={category.imageUrl}
+                />
+              );
+            })}
           </>
         )}
       </div>

@@ -38,7 +38,6 @@ export const fetchCategories = () => {
   return async (dispatch, getState) => {
     try {
       const category = await axios.get(`${apiUrl}/categories`);
-      //console.log("Hiiii", category.data);
       dispatch(fetchedCategoriesSuccess(category.data.categories));
     } catch (e) {
       console.log(e.message);
@@ -98,7 +97,6 @@ export const createCategory = (title, subtitle, imageUrl) => {
 export const updateCategory = (id, title, subtitle, imageUrl) => {
   return async (dispatch, getState) => {
     try {
-      //console.log("action", id);
       const token = selectToken(getState());
       const response = await axios.patch(
         `${apiUrl}/categories/${id}`,
@@ -111,8 +109,6 @@ export const updateCategory = (id, title, subtitle, imageUrl) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
-      //console.log("Yep!", response.data.category);
       dispatch(updatedCategory(response.data.category));
       dispatch(
         showMessageWithTimeout(
@@ -132,7 +128,6 @@ export const updateCategory = (id, title, subtitle, imageUrl) => {
 export const deleteCategory = (id) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
-    console.log(id);
     const token = selectToken(getState());
     try {
       const response = await axios.delete(`${apiUrl}/categories/${id}`, {
@@ -153,7 +148,6 @@ export const deleteCategory = (id) => {
 //Admin can add the product
 export const createProduct = (id, name, imageUrl, price) => {
   return async (dispatch, getState) => {
-    console.log("hiii", id, name, imageUrl, price);
     try {
       const token = selectToken(getState());
       const response = await axios.post(
