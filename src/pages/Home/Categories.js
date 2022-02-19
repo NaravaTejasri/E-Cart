@@ -18,9 +18,9 @@ function Categories() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (categories === null) {
+    /*   if (!categories) {
       return <Loading />;
-    }
+    } */
     dispatch(fetchCategories());
   }, [dispatch, categories]);
 
@@ -73,17 +73,21 @@ function Categories() {
           </>
         ) : (
           <>
-            {categories.map((category) => {
-              return (
-                <Category
-                  key={category.id}
-                  id={category.id}
-                  title={category.title}
-                  subtitle={category.subtitle}
-                  imageUrl={category.imageUrl}
-                />
-              );
-            })}
+            {!categories ? (
+              <Loading />
+            ) : (
+              categories.map((category) => {
+                return (
+                  <Category
+                    key={category.id}
+                    id={category.id}
+                    title={category.title}
+                    subtitle={category.subtitle}
+                    imageUrl={category.imageUrl}
+                  />
+                );
+              })
+            )}
           </>
         )}
       </div>
