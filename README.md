@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# E-Cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This read me will explain the codebase,which was created to build a fully-functional e-commerce website by using React.
 
-## Available Scripts
+### What is this repository for?
 
-In the project directory, you can run:
+E-Cart is a web application which will show the list of all Cattegories and Products. User can add the products to the cart and can see the details of cartItems list.
 
-### `npm start`
+### Technologies used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Reactjs
+- Nodejs
+- Postgres
+- Javascript
+- Html
+- Css and Sass
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Build Wireframes and UML diagrams
 
-### `npm test`
+- UML Diagram : https://dbdiagram.io/d/61e2968bafad7061115e654a
+- Wireframe: https://wireframepro.mockflow.com/view/shoppingApp
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Functionality
 
-### `npm run build`
+- HTML5 and CSS3: Semantic Elements, CSS Grid, Flexbox
+- React: Components, Props, Events, Hooks, Router, Axios
+- Redux: Store, Reducers, Actions
+- Node & Express: Web API, Body Parser, File Upload, JWT
+- Postgresql: Sequelize
+- Development: Git, Github
+- Frontend Deployment: Netflify
+- Backend Deployment: Heroku
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Required Software Tools
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Visual Studio Code.
+- node installed globally.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Project Overview
 
-### `npm run eject`
+E-Cart Application mainly contains cart, user profile.
+In homepage user can see all categories and that all categories should be clickable to link to their product page. The product page shows all the products of specific category. It also has option for user to choose and add the items to the cart. Added items are also can be edited or deleted by the user.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Admin Login
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In this app, as admin he can add, edit and delete the categories and products.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### How do we do it:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- install editorconfig globally
+  - npm install -g
+- How to create project:
+  - create-react-app projectname
 
-## Learn More
+#### How to run the application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##### install dependencies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> npm install
 
-### Code Splitting
+##### Setup Postgres
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> Local postgres
 
-### Analyzing the Bundle Size
+- Install Mongodb
+- Create .env file in root folder
+- Set MONGODB_URL=mongodb://localhost/shoppingCart
+  > Atlas Cloud MongoDB
+- Create database at https://cloud.mongodb.com
+- Create .env file in root folder
+- Set MONGODB_URL=mongodb+srv://your-db-connection
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Run Backend
 
-### Making a Progressive Web App
+- npm install
+- cd E-Cart-Server
+- npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Run Frontend
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- open new terminal
+- cd E-Cart
+- npm install
+- npm start
