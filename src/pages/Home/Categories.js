@@ -10,7 +10,7 @@ import Loading from "../../components/Loading";
 
 function Categories() {
   const categories = useSelector(selectCategories);
-  //console.log("categories", categories);
+  console.log("categories", categories);
   const { isAdmin } = useSelector(selectUser);
 
   const [searchInput, setSearchInput] = useState("");
@@ -21,7 +21,7 @@ function Categories() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  if (!categories) {
+  if (!categories.length) {
     console.log(categories);
     return <Loading />;
   }
